@@ -45,8 +45,12 @@ public class Player : MonoBehaviour
     public ProgressBar progressBar;
 
     //BUILDINGS
+    public BuildingManager bm;
+    public int myNumber;
+
     public Building building01;
     public Building02 building02;
+    //add new buildings here
 
 
     //bomb timer
@@ -130,14 +134,22 @@ public class Player : MonoBehaviour
 
             if (progressBar.searchIsDone == true)
             {
-                holdingBomb = true;
                 anim.SetBool("isIdle", false);
-                anim.SetBool("isIdleWithBomb", true);
+                if(bm.houseNumberWithBomb == myNumber)
+                {
+                    holdingBomb = true;
+                    anim.SetBool("isIdleWithBomb", true);
+                }
+                else
+                {
+                    Debug.Log("wrong house dude!");
+                }
                 //Exit the house [ESC]
                 //change the sprite - so perhaps the animation
                 searchBar.SetActive(false);
                 insideTheHouse = false;
                 sr.enabled = true;
+                progressBar.searchIsDone = false;
             }
         }
 
@@ -212,7 +224,10 @@ public class Player : MonoBehaviour
                 nearHouse = true;
                 houseSigns.SetActive(true);
                 houseNumber.SetActive(true);
-                text.text = building01.houseNumber.ToString();
+                //bellow line is needed for each new building
+                myNumber = building01.houseNumber;
+                //
+                text.text = myNumber.ToString();
             }
         }
 
@@ -223,7 +238,10 @@ public class Player : MonoBehaviour
                 nearHouse = true;
                 houseSigns.SetActive(true);
                 houseNumber.SetActive(true);
-                text.text = building02.houseNumber.ToString();
+                //
+                myNumber = building02.houseNumber;
+                //
+                text.text = myNumber.ToString();
             }
         }
     }

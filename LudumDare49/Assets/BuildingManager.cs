@@ -5,12 +5,16 @@ using TMPro;
 
 public class BuildingManager : MonoBehaviour
 {
-    
+    //new buildings need to have its own TAG and needs to be "registered" in Player script OnEnterTrigger and OnTriggerExit
+
+
     [SerializeField] private int house01;
     [SerializeField] private int house02;
+    //add new buildings here
 
     public Building building;
     public Building02 building02;
+    //add new buildings here
 
     //public int[] numberCollection;
 
@@ -34,6 +38,8 @@ public class BuildingManager : MonoBehaviour
 
         house01 = building.houseNumber;
         house02 = building02.houseNumber;
+        //add new buildings here
+
         /*
         int[] numberCollection = new int[] { house01, house02 };
 
@@ -77,6 +83,7 @@ public class BuildingManager : MonoBehaviour
 
     private void WhereIsBomb()
     {
+        //add new buildings into the array
         int[] numberCollection = new int[] { house01, house02 };
         int thisHouse = Random.Range(0, numberCollection.Length);
         houseNumberWithBomb = numberCollection[thisHouse];

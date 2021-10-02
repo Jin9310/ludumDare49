@@ -23,6 +23,7 @@ public class ProgressBar : MonoBehaviour
         if(currentAmount >= 100)
         {
             searchIsDone = true;
+            currentAmount = startAmount;
         }
 
         LoadingBar.GetComponent<Image>().fillAmount = currentAmount / 100;
