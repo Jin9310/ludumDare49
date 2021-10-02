@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
     //STATES
     [SerializeField] private bool insideTheHouse = false;
     //pressing ESC will enable player to escape from the house
-    [SerializeField] private bool holdingBomb = false;
+    public bool holdingBomb = false;
     //will affect players running walk ability
     //will slow him down
     [SerializeField] private bool nearHouse = false;
@@ -33,12 +34,19 @@ public class Player : MonoBehaviour
     Animator anim;
 
     public GameObject houseSigns;
+    public GameObject houseNumber;
+    public TMP_Text text;
+
     public GameObject dropBomb;
     public GameObject pickUpBomb;
     public GameObject bomb;
 
     public GameObject searchBar;
     public ProgressBar progressBar;
+
+    //BUILDINGS
+    public Building building01;
+    public Building02 building02;
 
 
     //bomb timer
@@ -197,30 +205,48 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Building") == true)
+        if(collision.CompareTag("building01") == true)
         {
             if(insideTheHouse != true && !holdingBomb)
             {
-                //Debug.Log("You are at the door, press [E] to enter");
                 nearHouse = true;
-
-                //display the signs
                 houseSigns.SetActive(true);
+                houseNumber.SetActive(true);
+                text.text = building01.houseNumber.ToString();
+            }
+        }
+
+        if (collision.CompareTag("building02") == true)
+        {
+            if (insideTheHouse != true && !holdingBomb)
+            {
+                nearHouse = true;
+                houseSigns.SetActive(true);
+                houseNumber.SetActive(true);
+                text.text = building02.houseNumber.ToString();
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Building") == true)
+        if (collision.CompareTag("building01") == true)
         {
             if (insideTheHouse != true)
             {
-                //Debug.Log("You have left the building");
                 nearHouse = false;
-
-                //hide the signs
                 houseSigns.SetActive(false);
+                houseNumber.SetActive(false);
+            }
+        }
+
+        if (collision.CompareTag("building02") == true)
+        {
+            if (insideTheHouse != true)
+            {
+                nearHouse = false;
+                houseSigns.SetActive(false);
+                houseNumber.SetActive(false);
             }
         }
     }

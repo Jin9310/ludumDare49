@@ -104,9 +104,16 @@ MonoBehaviour:
   insideTheHouse: 0
   holdingBomb: 0
   nearHouse: 0
+  houseWithBomb: 1
   _searchTimer: 0
   houseSigns: {fileID: 0}
+  dropBomb: {fileID: 0}
+  pickUpBomb: {fileID: 0}
   bomb: {fileID: 4380549292156896645, guid: ce6a8fbbed8a15b4996436f0b9f206f7, type: 3}
+  searchBar: {fileID: 0}
+  progressBar: {fileID: 0}
+  building01: {fileID: 0}
+  building02: {fileID: 0}
   bombasticTimer: 0
   randomBombStart: 0
 --- !u!50 &3710458091296277984

@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
     {
         startTimer = Random.Range(5f, 10f);
         bombTimer = startTimer;
-        Debug.Log(bombTimer);
+        //Debug.Log(bombTimer);
     }
 
     private void Update()
