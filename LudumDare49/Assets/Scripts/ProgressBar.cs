@@ -8,6 +8,8 @@ public class ProgressBar : MonoBehaviour
 
     public bool searchIsDone = false;
 
+    public bool runTimer = false;
+
 
     private float currentAmount;
     private float startAmount = 0f;
@@ -15,15 +17,15 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        if(currentAmount < 100)
+        if(runTimer == true)
         {
             currentAmount += speed * Time.deltaTime;
-        }
-
-        if(currentAmount >= 100)
-        {
-            searchIsDone = true;
-            currentAmount = startAmount;
+            if(currentAmount >= 100)
+            {
+                runTimer = false;
+                searchIsDone = true;
+                currentAmount = startAmount;
+            }
         }
 
         LoadingBar.GetComponent<Image>().fillAmount = currentAmount / 100;

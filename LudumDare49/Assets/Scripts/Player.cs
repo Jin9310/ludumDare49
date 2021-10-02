@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     //will slow him down
     [SerializeField] private bool nearHouse = false;
     //if near the house player can either enter or read the sign (house number)
-    private bool readHouseSigh = false;
     public bool houseWithBomb = true;
 
     private int health = 1;
@@ -110,6 +109,7 @@ public class Player : MonoBehaviour
             //hide players sprite
             sr.enabled = false;
             insideTheHouse = true;
+            progressBar.runTimer = true;
 
             //hide the signs
             houseSigns.SetActive(false);
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
             //make players sprite visible again
             sr.enabled = true;
             insideTheHouse = false;
-
+            progressBar.runTimer = false;
             searchBar.SetActive(false);
         }
 
