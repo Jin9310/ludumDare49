@@ -1230,7 +1230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2081707703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1320,6 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingBar: {fileID: 224462574}
   player: {fileID: 1721172138}
+  searchIsDone: 0
 --- !u!1 &2111679036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1131606475}
     - target: {fileID: 3710458091296277997, guid: 3ef919db71448f947ae9cb52c79426a3, type: 3}
+      propertyPath: searchBar
+      value: 
+      objectReference: {fileID: 2081707702}
+    - target: {fileID: 3710458091296277997, guid: 3ef919db71448f947ae9cb52c79426a3, type: 3}
       propertyPath: houseSigns
       value: 
       objectReference: {fileID: 1844292854}
@@ -1569,5 +1574,9 @@ PrefabInstance:
       propertyPath: pickUpBomb
       value: 
       objectReference: {fileID: 176196493}
+    - target: {fileID: 3710458091296277997, guid: 3ef919db71448f947ae9cb52c79426a3, type: 3}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 2081707707}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef919db71448f947ae9cb52c79426a3, type: 3}

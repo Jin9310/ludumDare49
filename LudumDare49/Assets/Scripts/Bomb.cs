@@ -3,12 +3,17 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     private float bombTimer;
+    private float startTimer;
 
     public Player player;
 
+    public bool explosion = false;
+
     private void Start()
     {
-        bombTimer = player.bombasticTimer;
+        startTimer = Random.Range(5f, 10f);
+        bombTimer = startTimer;
+        Debug.Log(bombTimer);
     }
 
     private void Update()
@@ -16,6 +21,7 @@ public class Bomb : MonoBehaviour
         bombTimer -= Time.deltaTime;
         if(bombTimer <= 0)
         {
+            explosion = true;
             //instantiate explosion
             //Instantiate();
             Destroy(gameObject);

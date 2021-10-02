@@ -21,15 +21,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool nearHouse = false;
     //if near the house player can either enter or read the sign (house number)
     private bool readHouseSigh = false;
+    public bool houseWithBomb = true;
 
     private int health = 1;
 
     public float _searchTimer;
     private float _startTimer = 5f;
-
-
-    //ANIMATION VARIABLES
-
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -39,6 +36,9 @@ public class Player : MonoBehaviour
     public GameObject dropBomb;
     public GameObject pickUpBomb;
     public GameObject bomb;
+
+    public GameObject searchBar;
+    public ProgressBar progressBar;
 
 
     //bomb timer
@@ -109,18 +109,27 @@ public class Player : MonoBehaviour
             //make players sprite visible again
             sr.enabled = true;
             insideTheHouse = false;
+
+            searchBar.SetActive(false);
         }
 
         if(insideTheHouse == true)
         {
-            _searchTimer -= Time.deltaTime;
-            if(_searchTimer <= 0)
+            searchBar.SetActive(true);
+            
+            //_searchTimer -= Time.deltaTime;
+            //if(_searchTimer <= 0)
+
+            if (progressBar.searchIsDone == true)
             {
                 holdingBomb = true;
                 anim.SetBool("isIdle", false);
                 anim.SetBool("isIdleWithBomb", true);
                 //Exit the house [ESC]
                 //change the sprite - so perhaps the animation
+                searchBar.SetActive(false);
+                insideTheHouse = false;
+                sr.enabled = true;
             }
         }
 
@@ -139,6 +148,11 @@ public class Player : MonoBehaviour
             Instantiate(bomb, transform.position, Quaternion.identity);
             anim.SetBool("isIdle", true);
             anim.SetBool("isIdleWithBomb", false);
+        }
+
+        if(bombasticTimer <= 0)
+        {
+            Die();
         }
 
     }
@@ -208,6 +222,17 @@ public class Player : MonoBehaviour
                 //hide the signs
                 houseSigns.SetActive(false);
             }
+        }
+    }
+
+    private void Die()
+    {
+        if(health <= 0)
+        {
+            //instantiate death animation
+            Debug.Log("Boooom! You are dead");
+            //wait for the end of the animation and move to finish screen
+            
         }
     }
 }
