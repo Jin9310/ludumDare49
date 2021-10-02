@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private int health = 1;
 
-    [SerializeField] private float _searchTimer;
+    public float _searchTimer;
     private float _startTimer = 5f;
 
 
@@ -36,9 +36,21 @@ public class Player : MonoBehaviour
     Animator anim;
 
     public GameObject houseSigns;
+    public GameObject dropBomb;
+    public GameObject pickUpBomb;
+    public GameObject bomb;
+
+
+    //bomb timer
+    public float bombasticTimer;
+    public float randomBombStart;
+
 
     private void Start()
     {
+        randomBombStart = Random.Range(20, 30);
+        bombasticTimer = randomBombStart;
+
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -111,6 +123,24 @@ public class Player : MonoBehaviour
                 //change the sprite - so perhaps the animation
             }
         }
+
+        if(holdingBomb == true)
+        {
+            bombasticTimer -= Time.deltaTime;
+            dropBomb.SetActive(true);
+        }else
+        {
+            dropBomb.SetActive(false);
+        }
+
+        if(holdingBomb == true && Input.GetKeyDown(KeyCode.E))
+        { 
+            holdingBomb = false;
+            Instantiate(bomb, transform.position, Quaternion.identity);
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isIdleWithBomb", false);
+        }
+
     }
 
     private void Flip()
@@ -155,7 +185,7 @@ public class Player : MonoBehaviour
     {
         if(collision.CompareTag("Building") == true)
         {
-            if(insideTheHouse != true)
+            if(insideTheHouse != true && !holdingBomb)
             {
                 //Debug.Log("You are at the door, press [E] to enter");
                 nearHouse = true;
