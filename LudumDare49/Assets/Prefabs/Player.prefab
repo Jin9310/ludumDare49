@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3710458091296277998}
   - component: {fileID: 3710458091296277999}
   - component: {fileID: 3710458091296277987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -101,21 +101,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 3
   _runSpeed: 0
+  throwBomb: 0
   insideTheHouse: 0
   holdingBomb: 0
   nearHouse: 0
   houseWithBomb: 1
   _searchTimer: 0
   houseSigns: {fileID: 0}
+  houseNumber: {fileID: 0}
+  text: {fileID: 0}
   dropBomb: {fileID: 0}
   pickUpBomb: {fileID: 0}
   bomb: {fileID: 4380549292156896645, guid: ce6a8fbbed8a15b4996436f0b9f206f7, type: 3}
   searchBar: {fileID: 0}
   progressBar: {fileID: 0}
+  bm: {fileID: 0}
+  myNumber: 0
   building01: {fileID: 0}
   building02: {fileID: 0}
+  building03: {fileID: 0}
+  building04: {fileID: 0}
   bombasticTimer: 0
   randomBombStart: 0
+  countDown: {fileID: 0}
+  textCoundown: {fileID: 0}
+  exploFX: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
 --- !u!50 &3710458091296277984
 Rigidbody2D:
   serializedVersion: 4

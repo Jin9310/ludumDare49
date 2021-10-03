@@ -7,6 +7,9 @@ TagManager:
   - Building
   - building01
   - building02
+  - Bomb
+  - building04
+  - building03
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Bomb
   - 
   - 
   - 

@@ -6,13 +6,33 @@ public class Bomb : MonoBehaviour
     private float startTimer;
 
     public Player player;
+    public GameObject exploFX;
 
     public bool explosion = false;
 
+    Rigidbody2D rb;
+    private float force = 3f;
+
+    private int randDirection;
+
     private void Start()
     {
-        startTimer = Random.Range(5f, 10f);
+        rb = GetComponent<Rigidbody2D>();
+        startTimer = Random.Range(2f, 5f);
         bombTimer = startTimer;
+
+        randDirection = Random.Range(0, 2);
+        if(randDirection == 0)
+        {
+            rb.AddForce(transform.up * force, ForceMode2D.Impulse);
+            rb.AddForce(transform.right * force, ForceMode2D.Impulse);
+        }else
+        {
+            rb.AddForce(transform.up * force, ForceMode2D.Impulse);
+            rb.AddForce(transform.right * -force, ForceMode2D.Impulse);
+        }
+            
+
         //Debug.Log(bombTimer);
     }
 
@@ -22,8 +42,8 @@ public class Bomb : MonoBehaviour
         if(bombTimer <= 0)
         {
             explosion = true;
-            //instantiate explosion
-            //Instantiate();
+            Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            //instantiate explosion sound
             Destroy(gameObject);
         }
     }

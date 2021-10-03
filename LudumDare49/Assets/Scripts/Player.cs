@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _runSpeed;
 
     private bool _facingRight = true;
+
+    public bool throwBomb = false;
 
     //STATES
     [SerializeField] private bool insideTheHouse = false;
@@ -49,6 +52,8 @@ public class Player : MonoBehaviour
 
     public Building building01;
     public Building02 building02;
+    public Building03 building03;
+    public Building04 building04;
     //add new buildings here
 
 
@@ -56,10 +61,15 @@ public class Player : MonoBehaviour
     public float bombasticTimer;
     public float randomBombStart;
 
+    public GameObject countDown;
+    public TMP_Text textCoundown;
+
+    public GameObject exploFX;
+
 
     private void Start()
     {
-        randomBombStart = Random.Range(20, 30);
+        randomBombStart = Random.Range(10, 30);
         bombasticTimer = randomBombStart;
 
         rb = GetComponent<Rigidbody2D>();
@@ -163,16 +173,33 @@ public class Player : MonoBehaviour
         }
 
         if(holdingBomb == true && Input.GetKeyDown(KeyCode.E))
-        { 
+        {
+            throwBomb = false;
             holdingBomb = false;
-            Instantiate(bomb, transform.position, Quaternion.identity);
+            Instantiate(bomb, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
             anim.SetBool("isIdle", true);
             anim.SetBool("isIdleWithBomb", false);
         }
 
-        if(bombasticTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Instantiate(bomb, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity);
+        }
+
+        if (bombasticTimer <= 0)
         {
             Die();
+            bombasticTimer = randomBombStart;
+        }
+
+        if(bombasticTimer <= 10 && holdingBomb == true)
+        {
+            countDown.SetActive(true);
+            var timeToDie = Mathf.Round(bombasticTimer);
+            textCoundown.text = timeToDie.ToString();
+        }else
+        {
+            countDown.SetActive(false);
         }
 
     }
@@ -244,6 +271,34 @@ public class Player : MonoBehaviour
                 text.text = myNumber.ToString();
             }
         }
+
+        if (collision.CompareTag("building03") == true)
+        {
+            if (insideTheHouse != true && !holdingBomb)
+            {
+                nearHouse = true;
+                houseSigns.SetActive(true);
+                houseNumber.SetActive(true);
+                //
+                myNumber = building03.houseNumber;
+                //
+                text.text = myNumber.ToString();
+            }
+        }
+
+        if (collision.CompareTag("building04") == true)
+        {
+            if (insideTheHouse != true && !holdingBomb)
+            {
+                nearHouse = true;
+                houseSigns.SetActive(true);
+                houseNumber.SetActive(true);
+                //
+                myNumber = building04.houseNumber;
+                //
+                text.text = myNumber.ToString();
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -267,13 +322,35 @@ public class Player : MonoBehaviour
                 houseNumber.SetActive(false);
             }
         }
+
+        if (collision.CompareTag("building03") == true)
+        {
+            if (insideTheHouse != true)
+            {
+                nearHouse = false;
+                houseSigns.SetActive(false);
+                houseNumber.SetActive(false);
+            }
+        }
+
+        if (collision.CompareTag("building04") == true)
+        {
+            if (insideTheHouse != true)
+            {
+                nearHouse = false;
+                houseSigns.SetActive(false);
+                houseNumber.SetActive(false);
+            }
+        }
     }
 
     private void Die()
     {
+        health--;
         if(health <= 0)
         {
             //instantiate death animation
+            Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Debug.Log("Boooom! You are dead");
             //wait for the end of the animation and move to finish screen
             
