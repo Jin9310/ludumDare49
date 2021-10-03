@@ -113,6 +113,26 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
+        if(_moveInput == 0 && holdingBomb != true)
+        {
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isIdleWithBomb", false);
+            anim.SetBool("walk", false);
+        }
+        else if(_moveInput == 0 && holdingBomb == true)
+        {
+            anim.SetBool("isIdle", false); 
+            anim.SetBool("walk", false);
+            anim.SetBool("isIdleWithBomb", true);
+        }else if(_moveInput != 0)
+        {
+            anim.SetBool("walk", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isIdleWithBomb", false);
+        }
+
+
         //get into the house
         if(nearHouse == true && Input.GetKeyDown(KeyCode.E))
         {
@@ -217,19 +237,23 @@ public class Player : MonoBehaviour
         //walk
         rb.velocity = new Vector2((_moveInput * _walkSpeed)/hold, rb.velocity.y);
         /*
-        if(holdingBomb != true)
+        if(holdingBomb != true && _moveInput != 0)
         {
             //place for walk animation to start
+            anim.SetBool("walk", true);
         }
-        else
+        else if(holdingBomb != false && _moveInput != 0)
         {
-            //place for walk animation with bomb to start
+            anim.SetBool("walk", true);
         }*/
 
         //run
         if (_moveInput != 0 && Input.GetKey(KeyCode.LeftShift) == true)
         {
-            rb.velocity = new Vector2((_moveInput * _runSpeed)/hold, rb.velocity.y);
+            rb.velocity = new Vector2((_moveInput * _runSpeed)/hold, rb.velocity.y);/*
+            anim.SetBool("walk", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isIdleWithBomb", false);*/
             /*
             if (holdingBomb != true)
             {

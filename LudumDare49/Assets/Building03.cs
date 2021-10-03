@@ -6,7 +6,7 @@ public class Building03 : MonoBehaviour
 
     private void Start()
     {
-        houseNumber = Random.Range(1, 100);
+        houseNumber = Random.Range(800, 900);
         //Debug.Log("house2 : " + houseNumber);
     }
 }
