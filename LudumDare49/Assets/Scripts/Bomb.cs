@@ -13,6 +13,8 @@ public class Bomb : MonoBehaviour
     Rigidbody2D rb;
     private float force = 3f;
 
+    public GameObject blast;
+
     private int randDirection;
 
     private void Start()
@@ -43,6 +45,7 @@ public class Bomb : MonoBehaviour
         {
             explosion = true;
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            Instantiate(blast, transform.position, Quaternion.identity);
             //instantiate explosion sound
             Destroy(gameObject);
         }

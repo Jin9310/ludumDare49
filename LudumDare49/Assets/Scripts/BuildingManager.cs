@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class BuildingManager : MonoBehaviour
     public float tickTock;
     private float startTickTock = 25f;
     public bool houseExplode = false;
+
+
+    public float deadHouseTimer = 3f;
 
 
     private void Start()
@@ -94,6 +98,15 @@ public class BuildingManager : MonoBehaviour
                 WhereIsBomb();
                 bombIsActive = true;
                 newTimer = startNewTimer;
+            }
+        }
+
+        if(building.houseIsDead == true || building02.houseIsDead == true || building03.houseIsDead == true || building04.houseIsDead == true)
+        {
+            deadHouseTimer -= Time.deltaTime;
+            if(deadHouseTimer <= 0)
+            {
+                SceneManager.LoadScene("03EndScreen");
             }
         }
     }

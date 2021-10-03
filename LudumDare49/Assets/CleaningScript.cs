@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CleaningScript : MonoBehaviour
 {
-    private float deathTimer = 1f;
+    private float deathTimer = 2f;
 
     // Update is called once per frame
     void Update()

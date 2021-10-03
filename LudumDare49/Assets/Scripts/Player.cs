@@ -119,17 +119,32 @@ public class Player : MonoBehaviour
             anim.SetBool("isIdle", true);
             anim.SetBool("isIdleWithBomb", false);
             anim.SetBool("walk", false);
+            anim.SetBool("walkWithBomb", false);
+
         }
         else if(_moveInput == 0 && holdingBomb == true)
         {
             anim.SetBool("isIdle", false); 
             anim.SetBool("walk", false);
             anim.SetBool("isIdleWithBomb", true);
-        }else if(_moveInput != 0)
+            anim.SetBool("walkWithBomb", false);
+
+        }
+        else if(_moveInput != 0 && holdingBomb != true)
         {
             anim.SetBool("walk", true);
             anim.SetBool("isIdle", false);
             anim.SetBool("isIdleWithBomb", false);
+            anim.SetBool("walkWithBomb", false);
+
+        }
+        else if(_moveInput != 0 && holdingBomb == true)
+        {
+            anim.SetBool("walkWithBomb", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isIdleWithBomb", false);
+            anim.SetBool("walk", false);
+
         }
 
 
@@ -197,8 +212,16 @@ public class Player : MonoBehaviour
             throwBomb = false;
             holdingBomb = false;
             Instantiate(bomb, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
-            anim.SetBool("isIdle", true);
+            
             anim.SetBool("isIdleWithBomb", false);
+            if(_moveInput != 0)
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("walkWithBomb", false);
+            }else
+            {
+                anim.SetBool("isIdle", true);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.N))
@@ -323,7 +346,13 @@ public class Player : MonoBehaviour
                 text.text = myNumber.ToString();
             }
         }
-    }
+
+        if (collision.CompareTag("Edge") == true)
+        {
+            Die();
+        }
+
+        }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -375,7 +404,9 @@ public class Player : MonoBehaviour
         {
             //instantiate death animation
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            Debug.Log("Boooom! You are dead");
+            Destroy(gameObject);
+            SceneManager.LoadScene("03EndScreen");
+            Debug.Log("Player Died");
             //wait for the end of the animation and move to finish screen
             
         }

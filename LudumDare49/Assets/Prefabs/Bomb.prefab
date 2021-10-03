@@ -100,6 +100,7 @@ MonoBehaviour:
   player: {fileID: 3710458091296277997, guid: 3ef919db71448f947ae9cb52c79426a3, type: 3}
   exploFX: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
   explosion: 0
+  blast: {fileID: 477225571319436691, guid: b1a7819c8fb89074f836ff73a3b3ca4e, type: 3}
 --- !u!61 &4380549292156896650
 BoxCollider2D:
   m_ObjectHideFlags: 0
