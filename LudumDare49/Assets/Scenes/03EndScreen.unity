@@ -462,6 +462,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: PLAY AGAIN
       objectReference: {fileID: 0}
+    - target: {fileID: 6227888414660544, guid: 9a526c0affc67234b8b8e9caa0012b07, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2990922832808784725, guid: 4c8d7967458ea52418aae6f18184b3b2, type: 3}
+    - target: {fileID: 6227888414660544, guid: 9a526c0affc67234b8b8e9caa0012b07, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6227888536914674, guid: 9a526c0affc67234b8b8e9caa0012b07, type: 3}
       propertyPath: m_Pivot.x
       value: 0
