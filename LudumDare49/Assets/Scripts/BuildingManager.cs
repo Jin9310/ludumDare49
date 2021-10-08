@@ -37,14 +37,16 @@ public class BuildingManager : MonoBehaviour
 
     public int helpMe;
 
+    //this is timer for new bomb to appear in new house
     private float newTimer;
     private float startNewTimer;
 
+    //once the above timer is done, below timer needs to start and if this one runs off, house will explode
     public float tickTock;
     private float startTickTock = 25f;
     public bool houseExplode = false;
 
-
+    //this should help to show the explosion
     public float deadHouseTimer = 3f;
 
 
@@ -76,8 +78,8 @@ public class BuildingManager : MonoBehaviour
             if(tickTock <= 0)
             {
                 houseExplode = true;
-                tickTock = startTickTock;
                 bombIsActive = false;
+                tickTock = startTickTock;
             }
         }
 

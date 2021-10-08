@@ -2505,6 +2505,7 @@ MonoBehaviour:
   houseIsDead: 0
   bm: {fileID: 1734188298}
   explosion: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
+  blast: {fileID: 477225571319436691, guid: b1a7819c8fb89074f836ff73a3b3ca4e, type: 3}
   debris01: {fileID: 3807811215934136235, guid: e89596aa50e2a3e40b7d28c43465341d, type: 3}
   debris02: {fileID: 4715782916606703269, guid: 56b875ebee04cc546aad7d74bac78cf5, type: 3}
   debris03: {fileID: 4150368640104752000, guid: 55472fac7fe76c14f9d097f68818c79a, type: 3}
@@ -3244,6 +3245,7 @@ MonoBehaviour:
   houseIsDead: 0
   bm: {fileID: 1734188298}
   explosion: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
+  blast: {fileID: 477225571319436691, guid: b1a7819c8fb89074f836ff73a3b3ca4e, type: 3}
   debris01: {fileID: 4715782916606703269, guid: 56b875ebee04cc546aad7d74bac78cf5, type: 3}
   debris02: {fileID: 3807811215934136235, guid: e89596aa50e2a3e40b7d28c43465341d, type: 3}
   debris03: {fileID: 4150368640104752000, guid: 55472fac7fe76c14f9d097f68818c79a, type: 3}
@@ -5156,6 +5158,7 @@ MonoBehaviour:
   houseIsDead: 0
   bm: {fileID: 1734188298}
   explosion: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
+  blast: {fileID: 477225571319436691, guid: b1a7819c8fb89074f836ff73a3b3ca4e, type: 3}
   debris01: {fileID: 3807811215934136235, guid: e89596aa50e2a3e40b7d28c43465341d, type: 3}
   debris02: {fileID: 4715782916606703269, guid: 56b875ebee04cc546aad7d74bac78cf5, type: 3}
   debris03: {fileID: 4150368640104752000, guid: 55472fac7fe76c14f9d097f68818c79a, type: 3}
@@ -6305,6 +6308,7 @@ MonoBehaviour:
   textInstructions: {fileID: 872490671}
   bombIsActive: 0
   player: {fileID: 1721172138}
+  helpMe: 0
   tickTock: 0
   houseExplode: 0
   deadHouseTimer: 3
@@ -6824,6 +6828,7 @@ MonoBehaviour:
   houseIsDead: 0
   bm: {fileID: 1734188298}
   explosion: {fileID: 1673043141172717635, guid: b8b0a2c9d53d1dc4b9ca97ec9c0a61dc, type: 3}
+  blast: {fileID: 477225571319436691, guid: b1a7819c8fb89074f836ff73a3b3ca4e, type: 3}
   debris01: {fileID: 3807811215934136235, guid: e89596aa50e2a3e40b7d28c43465341d, type: 3}
   debris02: {fileID: 4715782916606703269, guid: 56b875ebee04cc546aad7d74bac78cf5, type: 3}
   debris03: {fileID: 4150368640104752000, guid: 55472fac7fe76c14f9d097f68818c79a, type: 3}

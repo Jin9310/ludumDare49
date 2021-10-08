@@ -8,6 +8,8 @@ public class Building02 : MonoBehaviour
 
     public BuildingManager bm;
     public GameObject explosion;
+    //sound
+    public GameObject blast;
 
     public GameObject debris01;
     public GameObject debris02;
@@ -30,44 +32,26 @@ public class Building02 : MonoBehaviour
     {
         if (houseNumber == bm.houseNumberWithBomb && bm.houseExplode == true)
         {
-            //instantiate debris
-            Instantiate(debris01, transform.position, Quaternion.identity);
-            Instantiate(debris02, transform.position, Quaternion.identity);
-            Instantiate(debris03, transform.position, Quaternion.identity);
-            Instantiate(debris04, transform.position, Quaternion.identity);
-            Instantiate(debris05, transform.position, Quaternion.identity);
-            Instantiate(debris06, transform.position, Quaternion.identity);
-            Instantiate(debris07, transform.position, Quaternion.identity);
-            Instantiate(debris08, transform.position, Quaternion.identity);
-            Instantiate(debris09, transform.position, Quaternion.identity);
-            Instantiate(debris10, transform.position, Quaternion.identity);
-            Instantiate(debris01, transform.position, Quaternion.identity);
-            Instantiate(debris02, transform.position, Quaternion.identity);
-            Instantiate(debris03, transform.position, Quaternion.identity);
-            Instantiate(debris04, transform.position, Quaternion.identity);
-            Instantiate(debris05, transform.position, Quaternion.identity);
-            Instantiate(debris06, transform.position, Quaternion.identity);
-            Instantiate(debris07, transform.position, Quaternion.identity);
-            Instantiate(debris08, transform.position, Quaternion.identity);
-            Instantiate(debris09, transform.position, Quaternion.identity);
-            Instantiate(debris10, transform.position, Quaternion.identity);
-            Instantiate(debris01, transform.position, Quaternion.identity);
-            Instantiate(debris02, transform.position, Quaternion.identity);
-            Instantiate(debris03, transform.position, Quaternion.identity);
-            Instantiate(debris04, transform.position, Quaternion.identity);
-            Instantiate(debris05, transform.position, Quaternion.identity);
-            Instantiate(debris06, transform.position, Quaternion.identity);
-            Instantiate(debris07, transform.position, Quaternion.identity);
-            Instantiate(debris08, transform.position, Quaternion.identity);
-            Instantiate(debris09, transform.position, Quaternion.identity);
-            Instantiate(debris10, transform.position, Quaternion.identity);
-
-
+            for (int i = 0; i < 11; i++)
+            {
+                //instantiate debris
+                Instantiate(debris01, transform.position, Quaternion.identity);
+                Instantiate(debris02, transform.position, Quaternion.identity);
+                Instantiate(debris03, transform.position, Quaternion.identity);
+                Instantiate(debris04, transform.position, Quaternion.identity);
+                Instantiate(debris05, transform.position, Quaternion.identity);
+                Instantiate(debris06, transform.position, Quaternion.identity);
+                Instantiate(debris07, transform.position, Quaternion.identity);
+                Instantiate(debris08, transform.position, Quaternion.identity);
+                Instantiate(debris09, transform.position, Quaternion.identity);
+                Instantiate(debris10, transform.position, Quaternion.identity);
+                Debug.Log(i);
+            }
             Instantiate(explosion, transform.position, Quaternion.identity);
-
+            //sound
+            Instantiate(blast, transform.position, Quaternion.identity);
             houseIsDead = true;
-            SceneManager.LoadScene("03EndScreen");
-
+            //SceneManager.LoadScene("03EndScreen");
             Destroy(gameObject);
             Debug.Log("You have lost house number " + houseNumber);
         }
