@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
             //don' t move the character while inside the building
             if (insideTheHouse != true)
             {
+                // 2 is for walk while holding the bomb
                 Move(2);
             }
         }
@@ -120,15 +121,13 @@ public class Player : MonoBehaviour
             anim.SetBool("isIdleWithBomb", false);
             anim.SetBool("walk", false);
             anim.SetBool("walkWithBomb", false);
-
         }
         else if(_moveInput == 0 && holdingBomb == true)
         {
+            anim.SetBool("isIdleWithBomb", true);
             anim.SetBool("isIdle", false); 
             anim.SetBool("walk", false);
-            anim.SetBool("isIdleWithBomb", true);
             anim.SetBool("walkWithBomb", false);
-
         }
         else if(_moveInput != 0 && holdingBomb != true)
         {
@@ -136,7 +135,6 @@ public class Player : MonoBehaviour
             anim.SetBool("isIdle", false);
             anim.SetBool("isIdleWithBomb", false);
             anim.SetBool("walkWithBomb", false);
-
         }
         else if(_moveInput != 0 && holdingBomb == true)
         {
@@ -144,10 +142,8 @@ public class Player : MonoBehaviour
             anim.SetBool("isIdle", false);
             anim.SetBool("isIdleWithBomb", false);
             anim.SetBool("walk", false);
-
         }
-
-
+        
         //get into the house
         if(nearHouse == true && Input.GetKeyDown(KeyCode.E))
         {
@@ -155,7 +151,6 @@ public class Player : MonoBehaviour
             sr.enabled = false;
             insideTheHouse = true;
             progressBar.runTimer = true;
-
             //hide the signs
             houseSigns.SetActive(false);
         }
