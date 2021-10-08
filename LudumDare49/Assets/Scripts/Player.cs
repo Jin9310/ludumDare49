@@ -204,6 +204,10 @@ public class Player : MonoBehaviour
             dropBomb.SetActive(true);
         }else
         {
+            //if player drops the bomb, timer needs to be reset
+            randomBombStart = Random.Range(10, 30);
+            bombasticTimer = randomBombStart;
+
             dropBomb.SetActive(false);
         }
 

@@ -35,6 +35,8 @@ public class BuildingManager : MonoBehaviour
     public Player player;
 
 
+    public int helpMe;
+
     private float newTimer;
     private float startNewTimer;
 
@@ -92,6 +94,9 @@ public class BuildingManager : MonoBehaviour
 
         if(bombIsActive == false)
         {
+            //this needs to be here in order to restart the timer of ticking bomb again
+            tickTock = startTickTock;
+
             newTimer -= Time.deltaTime;
             if(newTimer <= 0)
             {
@@ -114,9 +119,10 @@ public class BuildingManager : MonoBehaviour
     private void WhereIsBomb()
     {
         //add new buildings into the array
-        int[] numberCollection = new int[] { house01, house02, house03, house04 };
+        int[] numberCollection = new int[] { house01, house02, house04 };
         int thisHouse = Random.Range(0, numberCollection.Length);
         houseNumberWithBomb = numberCollection[thisHouse];
+        helpMe = houseNumberWithBomb;
     }
 
 }
