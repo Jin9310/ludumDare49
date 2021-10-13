@@ -332,44 +332,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("building01") == true)
+        if (collision.CompareTag("building01") == true || collision.CompareTag("building02") == true || collision.CompareTag("building03") == true || collision.CompareTag("building04") == true)
         {
-            if (insideTheHouse != true)
-            {
-                nearHouse = false;
-                houseSigns.SetActive(false);
-                houseNumber.SetActive(false);
-            }
+            OutsideOfTheHouse();
         }
+    }
 
-        if (collision.CompareTag("building02") == true)
+    private void OutsideOfTheHouse()
+    {
+        if (insideTheHouse != true)
         {
-            if (insideTheHouse != true)
-            {
-                nearHouse = false;
-                houseSigns.SetActive(false);
-                houseNumber.SetActive(false);
-            }
-        }
-
-        if (collision.CompareTag("building03") == true)
-        {
-            if (insideTheHouse != true)
-            {
-                nearHouse = false;
-                houseSigns.SetActive(false);
-                houseNumber.SetActive(false);
-            }
-        }
-
-        if (collision.CompareTag("building04") == true)
-        {
-            if (insideTheHouse != true)
-            {
-                nearHouse = false;
-                houseSigns.SetActive(false);
-                houseNumber.SetActive(false);
-            }
+            nearHouse = false;
+            houseSigns.SetActive(false);
+            houseNumber.SetActive(false);
         }
     }
 
