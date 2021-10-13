@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
         {
             throwBomb = false;
             holdingBomb = false;
-            Instantiate(bomb, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
+            Instantiate(bomb, new Vector3(transform.position.x, transform.position.y + 1, -4), Quaternion.identity);
             
             anim.SetBool("isIdleWithBomb", false);
             if(_moveInput != 0)

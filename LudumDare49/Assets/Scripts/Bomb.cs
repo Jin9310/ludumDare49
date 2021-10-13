@@ -10,19 +10,20 @@ public class Bomb : MonoBehaviour
 
     public bool explosion = false;
 
-    Rigidbody2D rb;
-    private float force = 3f;
-
     public GameObject blast;
+    Rigidbody2D rb;
 
+    /*
+    private float force = 3f;
     private int randDirection;
+    */
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startTimer = Random.Range(2f, 5f);
         bombTimer = startTimer;
-
+        /*
         randDirection = Random.Range(0, 2);
         if(randDirection == 0)
         {
@@ -33,7 +34,7 @@ public class Bomb : MonoBehaviour
             rb.AddForce(transform.up * force, ForceMode2D.Impulse);
             rb.AddForce(transform.right * -force, ForceMode2D.Impulse);
         }
-            
+          */  
 
         //Debug.Log(bombTimer);
     }
