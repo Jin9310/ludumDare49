@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5001994475139111068}
   m_Layer: 0
   m_Name: Explo01
-  m_TagString: Untagged
+  m_TagString: Explo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
