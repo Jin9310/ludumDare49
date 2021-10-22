@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private int house02;
     [SerializeField] private int house03;
     [SerializeField] private int house04;
+    public int thisHouse;
     //add new buildings here
 
     public Building building;
@@ -49,6 +51,13 @@ public class BuildingManager : MonoBehaviour
     //this should help to show the explosion
     public float deadHouseTimer = 3f;
 
+    //camera
+    public CinemachineVirtualCamera vcam;
+    public Transform targetPlayer;
+    public Transform targetBuilding0;
+    public Transform targetBuilding02;
+    public Transform targetBuilding04;
+
 
     private void Start()
     {
@@ -64,12 +73,37 @@ public class BuildingManager : MonoBehaviour
 
         WhereIsBomb();
         bombIsActive = true;
-
     }
 
     private void Update()
     {
-        if(bombIsActive == true)
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            targetBuilding04 = building04.transform;
+            vcam.LookAt = targetBuilding04;
+            vcam.Follow = targetBuilding04;
+        } 
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            targetPlayer = player.transform;
+            vcam.LookAt = targetPlayer;
+            vcam.Follow = targetPlayer;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            targetBuilding0 = building.transform;
+            vcam.LookAt = targetBuilding0;
+            vcam.Follow = targetBuilding0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            targetBuilding02 = building02.transform;
+            vcam.LookAt = targetBuilding02;
+            vcam.Follow = targetBuilding02;
+        }
+
+
+        if (bombIsActive == true)
         {
             whereIsTheBomb.SetActive(true);
             text.text = "New bomb in building no. #" + houseNumberWithBomb;
@@ -110,6 +144,25 @@ public class BuildingManager : MonoBehaviour
 
         if(building.houseIsDead == true || building02.houseIsDead == true || building03.houseIsDead == true || building04.houseIsDead == true)
         {
+            switch (thisHouse)
+            {
+                case 0:
+                    targetBuilding0 = building.transform;
+                    vcam.LookAt = targetBuilding0;
+                    vcam.Follow = targetBuilding0;
+                    break;
+                case 1:
+                    targetBuilding02 = building02.transform;
+                    vcam.LookAt = targetBuilding02;
+                    vcam.Follow = targetBuilding02;
+                    break;
+                case 2:
+                    targetBuilding04 = building04.transform;
+                    vcam.LookAt = targetBuilding04;
+                    vcam.Follow = targetBuilding04;
+                    break;
+            }
+
             deadHouseTimer -= Time.deltaTime;
             if(deadHouseTimer <= 0)
             {
@@ -122,8 +175,9 @@ public class BuildingManager : MonoBehaviour
     {
         //add new buildings into the array
         int[] numberCollection = new int[] { house01, house02, house04 };
-        int thisHouse = Random.Range(0, numberCollection.Length);
+        thisHouse = Random.Range(0, numberCollection.Length);
         houseNumberWithBomb = numberCollection[thisHouse];
+        Debug.Log(thisHouse);
         helpMe = houseNumberWithBomb;
     }
 

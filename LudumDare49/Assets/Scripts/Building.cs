@@ -12,6 +12,8 @@ public class Building : MonoBehaviour
     //sound
     public GameObject blast;
 
+    GameObject building;
+
     //debris
     public GameObject debris01;
     public GameObject debris02;
@@ -28,6 +30,7 @@ public class Building : MonoBehaviour
     {
         houseNumber = Random.Range(100, 200);
         //Debug.Log("house1 : " + houseNumber);
+        building = GameObject.FindWithTag("building01");
     }
 
     private void Update()
@@ -55,7 +58,8 @@ public class Building : MonoBehaviour
             Instantiate(blast, transform.position, Quaternion.identity);
             houseIsDead = true;
             //SceneManager.LoadScene("03EndScreen");
-            Destroy(gameObject);
+            building.SetActive(false);
+            //Destroy(gameObject);
             Debug.Log("You have lost house number " + houseNumber);
         }
     }
