@@ -77,31 +77,8 @@ public class BuildingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            targetBuilding04 = building04.transform;
-            vcam.LookAt = targetBuilding04;
-            vcam.Follow = targetBuilding04;
-        } 
-        else if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            targetPlayer = player.transform;
-            vcam.LookAt = targetPlayer;
-            vcam.Follow = targetPlayer;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            targetBuilding0 = building.transform;
-            vcam.LookAt = targetBuilding0;
-            vcam.Follow = targetBuilding0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            targetBuilding02 = building02.transform;
-            vcam.LookAt = targetBuilding02;
-            vcam.Follow = targetBuilding02;
-        }
 
+        ManualChangeOfCamera();
 
         if (bombIsActive == true)
         {
@@ -144,30 +121,36 @@ public class BuildingManager : MonoBehaviour
 
         if(building.houseIsDead == true || building02.houseIsDead == true || building03.houseIsDead == true || building04.houseIsDead == true)
         {
-            switch (thisHouse)
-            {
-                case 0:
-                    targetBuilding0 = building.transform;
-                    vcam.LookAt = targetBuilding0;
-                    vcam.Follow = targetBuilding0;
-                    break;
-                case 1:
-                    targetBuilding02 = building02.transform;
-                    vcam.LookAt = targetBuilding02;
-                    vcam.Follow = targetBuilding02;
-                    break;
-                case 2:
-                    targetBuilding04 = building04.transform;
-                    vcam.LookAt = targetBuilding04;
-                    vcam.Follow = targetBuilding04;
-                    break;
-            }
+
+            ExplosionCamera();
 
             deadHouseTimer -= Time.deltaTime;
             if(deadHouseTimer <= 0)
             {
                 SceneManager.LoadScene("03EndScreen");
             }
+        }
+    }
+
+    private void ExplosionCamera()
+    {
+        switch (thisHouse)
+        {
+            case 0:
+                targetBuilding0 = building.transform;
+                vcam.LookAt = targetBuilding0;
+                vcam.Follow = targetBuilding0;
+                break;
+            case 1:
+                targetBuilding02 = building02.transform;
+                vcam.LookAt = targetBuilding02;
+                vcam.Follow = targetBuilding02;
+                break;
+            case 2:
+                targetBuilding04 = building04.transform;
+                vcam.LookAt = targetBuilding04;
+                vcam.Follow = targetBuilding04;
+                break;
         }
     }
 
@@ -179,6 +162,34 @@ public class BuildingManager : MonoBehaviour
         houseNumberWithBomb = numberCollection[thisHouse];
         Debug.Log(thisHouse);
         helpMe = houseNumberWithBomb;
+    }
+
+    private void ManualChangeOfCamera()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            targetBuilding04 = building04.transform;
+            vcam.LookAt = targetBuilding04;
+            vcam.Follow = targetBuilding04;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            targetPlayer = player.transform;
+            vcam.LookAt = targetPlayer;
+            vcam.Follow = targetPlayer;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            targetBuilding0 = building.transform;
+            vcam.LookAt = targetBuilding0;
+            vcam.Follow = targetBuilding0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            targetBuilding02 = building02.transform;
+            vcam.LookAt = targetBuilding02;
+            vcam.Follow = targetBuilding02;
+        }
     }
 
 }
