@@ -134,6 +134,7 @@ public class BuildingManager : MonoBehaviour
 
     private void ExplosionCamera()
     {
+    //automatically switches to the building that is about to explode
         switch (thisHouse)
         {
             case 0:
@@ -166,6 +167,8 @@ public class BuildingManager : MonoBehaviour
 
     private void ManualChangeOfCamera()
     {
+    //you can manually switch between the views
+    
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             targetBuilding04 = building04.transform;
