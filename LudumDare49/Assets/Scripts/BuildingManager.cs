@@ -21,6 +21,9 @@ public class BuildingManager : MonoBehaviour
     public Building02 building02;
     public Building03 building03;
     public Building04 building04;
+    public GameObject leftEText;
+    public GameObject rightEText;
+
     //add new buildings here
 
     //public int[] numberCollection;
@@ -35,7 +38,6 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private bool bombIsActive = false;
 
     public Player player;
-
 
     public int helpMe;
 
@@ -57,6 +59,8 @@ public class BuildingManager : MonoBehaviour
     public Transform targetBuilding0;
     public Transform targetBuilding02;
     public Transform targetBuilding04;
+    public Transform leftEdgeText;
+    public Transform rightEdgeText;
 
 
     private void Start()
@@ -77,6 +81,22 @@ public class BuildingManager : MonoBehaviour
 
     private void Update()
     {
+        if(player.rightEdge == true)
+        {
+            rightEdgeText = rightEText.transform;
+            vcam.LookAt = rightEdgeText;
+            vcam.Follow = rightEdgeText;
+        }else if (player.leftEdge == true)
+        {
+            leftEdgeText = leftEText.transform;
+            vcam.LookAt = leftEdgeText;
+            vcam.Follow = leftEdgeText;
+        }else if (player.leftEdge != true && player.rightEdge != true)
+        {
+            targetPlayer = player.transform;
+            vcam.LookAt = targetPlayer;
+            vcam.Follow = targetPlayer;
+        }
 
         ManualChangeOfCamera();
 

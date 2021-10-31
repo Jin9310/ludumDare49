@@ -49,6 +49,9 @@ public class Player : MonoBehaviour
     //BUILDINGS
     public BuildingManager bm;
     public int myNumber;
+    //watching the text on the edges
+    public bool leftEdge = false;
+    public bool rightEdge = false;
 
     public Building building01;
     public Building02 building02;
@@ -162,6 +165,8 @@ public class Player : MonoBehaviour
             sr.enabled = true;
             insideTheHouse = false;
             progressBar.runTimer = false;
+            //reseting the progress bar with each cancel of the search
+            progressBar.currentAmount = 0f;
             searchBar.SetActive(false);
         }
 
@@ -328,6 +333,16 @@ public class Player : MonoBehaviour
             Die();
         }
 
+        if (collision.CompareTag("rightEdgeText") == true)
+        {
+            rightEdge = true;
+        }
+
+        if (collision.CompareTag("leftEdgeText") == true)
+        {
+            leftEdge = true;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -336,6 +351,10 @@ public class Player : MonoBehaviour
         {
             OutsideOfTheHouse();
         }
+
+            rightEdge = false;
+            leftEdge = false;
+
     }
 
     private void OutsideOfTheHouse()

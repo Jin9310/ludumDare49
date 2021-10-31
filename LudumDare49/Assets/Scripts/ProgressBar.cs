@@ -5,19 +5,31 @@ public class ProgressBar : MonoBehaviour
 {
     public Transform LoadingBar;
     public Player player;
+    private AudioSource audioSource;
 
     public bool searchIsDone = false;
 
     public bool runTimer = false;
 
 
-    [SerializeField] private float currentAmount;
+    public float currentAmount;
     private float startAmount = 0f;
     private float speed = 20f;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
-        if(runTimer == true)
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+
+        if (runTimer == true)
         {
             currentAmount += speed * Time.deltaTime;
             if(currentAmount >= 100)
@@ -27,11 +39,7 @@ public class ProgressBar : MonoBehaviour
                 currentAmount = startAmount;
             }
         }
-        if(runTimer == false)
-        {
-            Debug.Log("nula sakra");
-            currentAmount = 0f;
-        }
+        
 
         LoadingBar.GetComponent<Image>().fillAmount = currentAmount / 100;
     }

@@ -12,6 +12,8 @@ TagManager:
   - building03
   - Edge
   - Explo
+  - leftEdgeText
+  - rightEdgeText
   layers:
   - Default
   - TransparentFX
