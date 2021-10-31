@@ -11,7 +11,7 @@ public class ProgressBar : MonoBehaviour
     public bool runTimer = false;
 
 
-    private float currentAmount;
+    [SerializeField] private float currentAmount;
     private float startAmount = 0f;
     private float speed = 20f;
 
@@ -26,6 +26,11 @@ public class ProgressBar : MonoBehaviour
                 searchIsDone = true;
                 currentAmount = startAmount;
             }
+        }
+        if(runTimer == false)
+        {
+            Debug.Log("nula sakra");
+            currentAmount = 0f;
         }
 
         LoadingBar.GetComponent<Image>().fillAmount = currentAmount / 100;
