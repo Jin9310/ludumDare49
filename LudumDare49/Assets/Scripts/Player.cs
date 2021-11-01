@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public bool houseWithBomb = true;
 
     private int health = 1;
+    public bool playerIsDead = false;
 
     public float _searchTimer;
     private float _startTimer = 5f;
@@ -68,6 +69,17 @@ public class Player : MonoBehaviour
     public TMP_Text textCoundown;
 
     public GameObject exploFX;
+
+    //body parts
+    public GameObject head;
+    public GameObject torso;
+    public GameObject arm1;
+    public GameObject arm2;
+    public GameObject leg1;
+    public GameObject leg2;
+    public GameObject blood;
+
+    public GameObject blast;
 
 
     private void Start()
@@ -372,10 +384,27 @@ public class Player : MonoBehaviour
         health--;
         if(health <= 0)
         {
-            //instantiate death animation
+            playerIsDead = true;
+            //instantiate departed body parts
+            Instantiate(head, transform.position, Quaternion.identity);
+            Instantiate(torso, transform.position, Quaternion.identity);
+            Instantiate(arm1, transform.position, Quaternion.identity);
+            Instantiate(arm2, transform.position, Quaternion.identity);
+            Instantiate(leg1, transform.position, Quaternion.identity);
+            Instantiate(leg2, transform.position, Quaternion.identity);
+            //instantiate blood
+            for (int i = 0; i < 100; i++)
+            {
+                Instantiate(blood, transform.position, Quaternion.identity);
+            }
+
+            //instantiate the explosion
+            Instantiate(blast, transform.position, Quaternion.identity);
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Destroy(gameObject);
-            SceneManager.LoadScene("03EndScreen");
+
+            //the screen should be changed elsewhere, most likely in that death animation
+            //SceneManager.LoadScene("03EndScreen");
             Debug.Log("Player Died");
             //wait for the end of the animation and move to finish screen
             
