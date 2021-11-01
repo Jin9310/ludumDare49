@@ -181,7 +181,7 @@ public class BuildingManager : MonoBehaviour
         int[] numberCollection = new int[] { house01, house02, house04 };
         thisHouse = Random.Range(0, numberCollection.Length);
         houseNumberWithBomb = numberCollection[thisHouse];
-        Debug.Log(thisHouse);
+        //Debug.Log(thisHouse);
         helpMe = houseNumberWithBomb;
     }
 
