@@ -3,7 +3,8 @@ using UnityEngine;
 public class DropZone : MonoBehaviour
 {
 
-    public int defusedBombsCount;
+    public static int defusedBombsCount;
+    public static int numberOfExplosions;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

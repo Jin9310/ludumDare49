@@ -8,6 +8,8 @@ public class Bomb : MonoBehaviour
     public Player player;
     public GameObject exploFX;
 
+    public DropZone dropZone;
+
     public bool explosion = false;
 
     public GameObject blast;
@@ -48,6 +50,9 @@ public class Bomb : MonoBehaviour
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Instantiate(blast, transform.position, Quaternion.identity);
             //instantiate explosion sound
+
+            //count the explosions
+            DropZone.numberOfExplosions++;
             Destroy(gameObject);
         }
     }

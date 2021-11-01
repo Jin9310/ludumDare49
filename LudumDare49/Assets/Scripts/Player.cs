@@ -393,7 +393,7 @@ public class Player : MonoBehaviour
             Instantiate(leg1, transform.position, Quaternion.identity);
             Instantiate(leg2, transform.position, Quaternion.identity);
             //instantiate blood
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 30; i++)
             {
                 Instantiate(blood, transform.position, Quaternion.identity);
             }
@@ -401,6 +401,7 @@ public class Player : MonoBehaviour
             //instantiate the explosion
             Instantiate(blast, transform.position, Quaternion.identity);
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+
             Destroy(gameObject);
 
             //the screen should be changed elsewhere, most likely in that death animation

@@ -23,9 +23,6 @@ public class BuildingManager : MonoBehaviour
     public Building04 building04;
     public GameObject leftEText;
     public GameObject rightEText;
-
-    public GameObject bodyPartsCollection;
-
     //add new buildings here
 
     //public int[] numberCollection;
@@ -63,8 +60,6 @@ public class BuildingManager : MonoBehaviour
     public Transform targetBuilding04;
     public Transform leftEdgeText;
     public Transform rightEdgeText;
-    public Transform bPcoll;
-
 
     private void Start()
     {
@@ -85,13 +80,6 @@ public class BuildingManager : MonoBehaviour
     private void Update()
     {
 
-        if(player.playerIsDead == true)
-        {
-            bPcoll = bodyPartsCollection.transform;
-            vcam.LookAt = bPcoll;
-            vcam.Follow = bPcoll;
-        }
-
         if(player.rightEdge == true)
         {
             rightEdgeText = rightEText.transform;
@@ -102,7 +90,7 @@ public class BuildingManager : MonoBehaviour
             leftEdgeText = leftEText.transform;
             vcam.LookAt = leftEdgeText;
             vcam.Follow = leftEdgeText;
-        }else if (player.leftEdge != true && player.rightEdge != true && player.playerIsDead != true)
+        }else if (player.leftEdge != true && player.rightEdge != true)
         {
             targetPlayer = player.transform;
             vcam.LookAt = targetPlayer;
@@ -202,9 +190,9 @@ public class BuildingManager : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            bPcoll = bodyPartsCollection.transform;
-            vcam.LookAt = bPcoll;
-            vcam.Follow = bPcoll; ;
+            targetBuilding04 = building04.transform;
+            vcam.LookAt = targetBuilding04;
+            vcam.Follow = targetBuilding04;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha0))
         {

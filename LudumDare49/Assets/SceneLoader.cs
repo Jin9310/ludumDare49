@@ -7,6 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     public void PlayGame()
     {
+        DropZone.numberOfExplosions = 0;
+        DropZone.defusedBombsCount = 0;
         SceneManager.LoadScene("02Game");
     }
 }
