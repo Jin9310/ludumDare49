@@ -342,7 +342,9 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("Edge") == true || collision.CompareTag("Explo") == true)
         {
-            Die();
+            //Die();
+            SceneManager.LoadScene("03EndScreen");
+            DropZone.playerFell = true;
         }
 
         if (collision.CompareTag("rightEdgeText") == true)
@@ -403,6 +405,7 @@ public class Player : MonoBehaviour
             Instantiate(exploFX, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
 
             Destroy(gameObject);
+            DropZone.playerExploded = true;
 
             //the screen should be changed elsewhere, most likely in that death animation
             //SceneManager.LoadScene("03EndScreen");

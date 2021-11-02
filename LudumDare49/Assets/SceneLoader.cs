@@ -9,6 +9,9 @@ public class SceneLoader : MonoBehaviour
     {
         DropZone.numberOfExplosions = 0;
         DropZone.defusedBombsCount = 0;
+        DropZone.houseExploded = false;
+        DropZone.playerExploded = false;
+        DropZone.playerFell = false;
         SceneManager.LoadScene("02Game");
     }
 }

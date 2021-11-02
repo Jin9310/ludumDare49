@@ -59,6 +59,8 @@ public class Building : MonoBehaviour
             houseIsDead = true;
             //SceneManager.LoadScene("03EndScreen");
             building.SetActive(false);
+            DropZone.houseExploded = true;
+            DropZone.numberOfExplosions++;
             //Destroy(gameObject);
             Debug.Log("You have lost house number " + houseNumber);
         }
